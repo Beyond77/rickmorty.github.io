@@ -33,7 +33,7 @@ module.exports = {
         filename: "bundle.js"
     },
     plugins: [
-        new HtmlWebpackPlugin({ template: "src/index.html" }),
+        new HtmlWebpackPlugin({ template: "index.html" }),
         new Dotenv(),
     ],
     module: {
