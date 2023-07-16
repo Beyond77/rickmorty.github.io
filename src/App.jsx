@@ -30,7 +30,7 @@ const App = () => {
 
     return (
         <div className="container">
-            <h1 className="header">Rick And Morty Searcher</h1>
+            <h1 className="header">Rick And Morty Finder</h1>
             <div>
                 <form className="search-form" onSubmit={handleSubmit} >
                     <input type="text" name="Search" id="Search" placeholder="Character" onChange={ (e) => dispatch(setCharacterSearch({characterSearch: e.target.value})) } value={characterSearch} />

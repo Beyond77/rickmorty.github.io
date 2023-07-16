@@ -45,7 +45,6 @@
     border: 1px solid #5CAD4A;
     border-radius: 20px;
     text-align: center;
-
 }
 
 .grid-items {
@@ -62,7 +61,7 @@
 
 .grid-images:hover {
     filter: grayscale(0%);
-    
+
     border-radius: 20px 20px 0px 0px;
 }
 
@@ -159,5 +158,10 @@
         align-items: center;
         gap: 20px;
         flex-direction: column-reverse;
+    }
+
+    .search-form > input {
+        margin: 0px 30px;
+        width: 100%;
     }
 }
