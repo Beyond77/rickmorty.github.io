@@ -55,7 +55,6 @@ li > img {
     height: 100vh;
     position: fixed;
     top: 0;
-    transition: top 0ms ease-in-out 0ms;
     left: 0;
     background-color: rgba(0, 0, 0, .5);
     display: flex;
@@ -71,10 +70,8 @@ li > img {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    transition: opacity 100ms ease-in-out 200ms;
     border: 1px solid #208D45;
     color: #F0F2EB;
-    transform: translate(-0%, 0%) scale(1);
 }
 
 .modal-content {
