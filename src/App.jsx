@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import CharactersContainer from "./components/CharactersContainer";
 import Modal from "./components/Modal";
-import { getCharacters, getMultipleCharactersByName, incrementPage, decrementPage, setCharacterSearch, setModalVisible, setCharacterInformationModal  } from "./store/slices/rickmorty"
+import Pagination from "./components/Pagination";
+import { getCharacters, getMultipleCharactersByName, setCharacterSearch, setModalVisible, setCharacterInformationModal  } from "./store/slices/rickmorty"
 
 const App = () => {
 
     const dispatch = useDispatch();
-    const { isLoading, characters, page, characterSearch, modalVisible, characterInformationModal } = useSelector(state => state.rickmorty)
+    const { characters, page, characterSearch, modalVisible, characterInformationModal } = useSelector(state => state.rickmorty)
 
     useEffect(() => {
         if(!characterSearch.length === 0){
@@ -26,41 +28,25 @@ const App = () => {
         dispatch(setCharacterInformationModal({characterInformationModal: char}));
     }
 
-    if(isLoading){
-        return "Loading..."
-    }
-
     return (
         <div className="container">
+            <h1 className="header">Rick And Morty Searcher</h1>
             <div>
-                <h1>Rick And Morty Searcher</h1>
-                <form onSubmit={handleSubmit} >
-
-                    <input type="text" onChange={ (e) => dispatch(setCharacterSearch({characterSearch: e.target.value})) } value={characterSearch} />
-
+                <form className="search-form" onSubmit={handleSubmit} >
+                    <input type="text" name="Search" id="Search" placeholder="Character" onChange={ (e) => dispatch(setCharacterSearch({characterSearch: e.target.value})) } value={characterSearch} />
                 </form>
                 
-                <div className="buttons-container">
-                    <button onClick={() => dispatch(decrementPage())} > &lt; </button>
-                    <div>{ page }</div>
-                    <button onClick={() => dispatch(incrementPage())} > &gt; </button>
-                </div>
+                <Pagination page={page}/>
 
-                <ul className="grid">
-                    {
-                        characters.map((char) => (
-                        <li key={char.id} onClick={() => handleClickCharacter(char) }>
-                            <img src={char.image} alt={char.name} />
-                            <p className="text-card">{char.name}</p>
-                        </li>
-                        ))
-                    }
-                </ul>
+                <CharactersContainer characters={characters} handleClickCharacter={handleClickCharacter}/>
+
+                <Pagination page={page}/>
                
             </div>
+
             {
 
-                modalVisible && <Modal characterData={characterInformationModal} />
+                modalVisible && <Modal characterData={characterInformationModal} modalVisible={modalVisible}/>
             }
            
         </div>

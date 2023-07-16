@@ -1,11 +1,15 @@
-import React from "react";
+import { useDispatch } from "react-redux";
+import { decrementPage, incrementPage } from "../store/slices/rickmorty";
 
-const Pagination = ({handleLastPage, handleNextPage, nextPage}) => {
+const Pagination = ({ page }) => {
+
+  const dispatch = useDispatch();
+
   return (
     <div className="buttons-container">
-      <button onClick={handleLastPage}> &lt; </button>
-      <div>{nextPage}</div>
-      <button onClick={handleNextPage}> &gt; </button>
+      <button onClick={() => dispatch(decrementPage())}> &lt; </button>
+      <div>{ page }</div>
+      <button onClick={() => dispatch(incrementPage())}> &gt; </button>
     </div>
   );
 };
