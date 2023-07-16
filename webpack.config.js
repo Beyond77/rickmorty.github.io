@@ -30,7 +30,7 @@ const rules = [
 module.exports = {
     output: {
         path: path.resolve(__dirname, 'build'),
-        filename: "bundle.js"
+        filename: "[name].[contenthash].js"
     },
     plugins: [
         new HtmlWebpackPlugin({ template: "index.html" }),
