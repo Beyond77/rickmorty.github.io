@@ -97,3 +97,12 @@ li > img {
     color: #F0F2EB;
     cursor: pointer;
 }
+
+@media (max-width: 550px) {
+    .modal-content {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        flex-direction: column-reverse;
+    }
+}
